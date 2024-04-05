@@ -28,6 +28,15 @@ const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_P
 const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
 const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
+const REAL_MADRID_JERSEY = "link or file";
+const ARSENAL_JERSEY = "link or file";
+const ROMA_JERSEY = "link or file";
+const ATHLETICO_MADRID_JERSEY = "link or file";
+const CELTIC_JERSEY = "link or file";
+const BORUSSIA_DORTMUND_JERSEY = "link or file";
+const INTERNAZIOLANE_JERSEY = "link or file";
+
+
 // This is an array of strings (TV show titles)
 let titles = [
     "Fresh Prince of Bel Air",
