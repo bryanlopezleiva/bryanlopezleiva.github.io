@@ -1,48 +1,98 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>The Vintage Jersey Catalog</title>
-    <meta name="description" content="A Catalog of coffee shops in Pasadena">
-    <title>The Vintage Jersey Catalog</title>
+    <meta name="description" content="A Catalog of soccer jerseys" />
+    <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="main-header">
-        <h1 class="title">Welcome to THE Soccer Jersey Catalog</h1>
-        <nav>
-            <ul>
-                <li><a href = #club-jerseys>Club Jerseys</a></li>
-                <li><a href = #national-team-jerseys>National Team Jerseys</a></li>
-                <li><a href = #vintage-jerseys>Vintage Jerseys</a></li>
-                <li><a href = #exclusive-jerseys>Exclusive Jerseys</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div id="card-container">
-        
-    </div>
-    <div class="card" style="display: none;">
-        <div class="card-content">
-            <h2>Team Name</h2>
-            <img src="" alt="TV Show Poster">
-            <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
-            </ul>
+      <h1 class="title">Welcome to THE Soccer Jersey Catalog</h1>
+      <nav>
+        <div>
+          <ul class="nav-links">
+            <li><a href="#club-jerseys">Club Jerseys</a></li>
+            <li><a href="#national-team-jerseys">National Team Jerseys</a></li>
+            <li><a href="#vintage-jerseys">Vintage Jerseys</a></li>
+            <li><a href="#exclusive-jerseys">Exclusive Jerseys</a></li>
+          </ul>
         </div>
+      </nav>
+
+      <p>
+        Welcome to the soccer jersey catalog where we have a mix of select
+        jerseys that can be appreciated from many soccer fans around the world.
+        <br />
+        I will be sharing some jerseys that have inspired me to appreciated the
+        game of football even more.
+      </p>
+    </header>
+    <section id="club-jerseys">
+      <h2>Club Jerseys</h2>
+      <div class="card" style="display: none">
+        <div class="club-jerseys-content">
+          <h2>Club Jerseys</h2>
+          <img src="" alt="Club Jersey" />
+        </div>
+      </div>
+
+      <div id="club-jerseys-container"></div>
+    </section>
+
+    <section id="national-team-jerseys">
+      <h2>National Team Jerseys</h2>
+      <div class="card" style="display: node">
+        <div class="national-content">
+          <h2>National Team Jerseys</h2>
+          <img src="" alt="National Team" />
+        </div>
+      </div>
+
+      <div id="national-team-container"></div>
+    </section>
+
+    <section id="vintage-jerseys">
+      <h2>Vintage Jerseys</h2>
+      <div class="card" style="display: node">
+        <div class="vintage-content">
+          <h2>Vintage Jerseys</h2>
+          <img src="" alt="Vintage Jersey" />
+        </div>
+      </div>
+
+      <div id="vintage-container"></div>
+    </section>
+
+    <section id="exclusive-jerseys">
+      <h2>Exclusive Jerseys</h2>
+      <div class="card" style="display: node">
+        <div class="exclusive-content">
+          <h2>Exclusive Jerseys</h2>
+          <img src="" alt="Exclusive Jersey" />
+        </div>
+      </div>
+
+      <div id="exclusive-container"></div>
+    </section>
+
+    <div id="card-container"></div>
+    <div class="card" style="display: none">
+      <div class="card-content">
+        <h2>IDK</h2>
+        <img src="" alt="TV Show Poster" />
+        <ul>
+          <li>Bullet Point 1</li>
+          <li>Bullet Point 2</li>
+          <li>Bullet Point 3</li>
+        </ul>
+      </div>
     </div>
     <div class="footer">
-        <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button>
+      <button onclick="quoteAlert();">Get A Quote!</button>
+      <button onclick="removeLastCard();">Remove A Card!</button>
     </div>
-</body>
-
+  </body>
 </html>
