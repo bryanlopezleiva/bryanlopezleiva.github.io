@@ -1,5 +1,7 @@
 html {
-  scroll-behavior: smooth;
+  margin: 0;
+  height: 120%;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 a {
@@ -13,10 +15,14 @@ a:hover {
   text-decoration-color: black;
   text-decoration-color: rgb(181, 181, 181);
 }
+h1 {
+  text-shadow: 0 2px rgba(0, 0, 0, 0.5);
+}
 
 body {
+  flex-direction: column;
   margin: 0;
-  padding: 0;
+  min-height: 100vh;
   background-color: rgb(247, 242, 242);
 }
 
@@ -24,13 +30,13 @@ body {
   background-color: rgb(247, 242, 242);
   padding-bottom: 10px;
 }
-
 nav,
 .nav-links {
   display: flex;
 }
+
 nav {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   justify-content: space-around;
   align-items: center;
   height: 12vh;
@@ -43,13 +49,13 @@ nav {
 }
 
 p {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 2rem;
   text-align: center;
+  text-wrap: balance;
 }
 
 .title {
-  text-shadow: 5pxx 5px 0px green;
   font-size: 2.5rem;
   color: #333;
   margin: 20px 0;
@@ -63,14 +69,20 @@ p {
 }
 
 .card {
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid var(--color-goal-light-grey);
   padding: 20px;
-  margin: 10px;
+  gap: 20px;
+
+  border: 1px solid #ccc;
   background-color: #fff;
-  transition: 0.3s ease-in-out;
+
+  max-width: 40%;
+  margin-left: 30%;
+  margin-bottom: 20px;
 }
 
 .card:hover {
@@ -80,13 +92,15 @@ p {
 
 .card-content {
   padding: 20px;
-  font-family: "Verdana";
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
   color: rgb(97, 89, 89);
 }
 
-.card-content h2 {
+h2 {
   margin-top: 0;
-  font-size: 20px;
+  text-shadow: 0 2px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
 }
 
 .card img {
@@ -94,9 +108,35 @@ p {
   height: auto;
 }
 
+.section {
+  align-items: center;
+}
 section {
   display: flex;
   flex-direction: column;
   margin-left: 90px;
-  align-items: flex-start; /* Center vertically */
+  text-align: center;
+}
+
+div {
+  font-family: "Helvetica", sans-serif;
+  text-shadow: 0 2px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+  text-align: center;
+  margin-left: 10px;
+  padding: 30px;
+}
+
+input {
+  width: 15%;
+  padding: 12px 20px;
+  margin-left: 75%;
+  box-sizing: border-box;
+}
+input[type="text"] {
+  transition: width 0.4s ease-in-out;
+}
+
+input[type="text"]:focus {
+  width: 24%;
 }

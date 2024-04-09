@@ -11,6 +11,13 @@
   <body>
     <header class="main-header">
       <h1 class="title">Welcome to THE Soccer Kit Catalog</h1>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for a team..."
+        oninput="searchFunction()"
+      />
+
       <nav>
         <div>
           <ul class="nav-links">
@@ -38,9 +45,9 @@
           <img src="" alt="Club Kit" />
         </div>
       </div>
-
-      <div id="club-kits-container"></div>
     </section>
+
+    <div id="club-kits-container"></div>
 
     <section id="national-team-kits">
       <h2>National Team Kits</h2>

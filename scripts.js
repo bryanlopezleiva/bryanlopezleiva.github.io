@@ -49,16 +49,27 @@ const CATEGORIES = [
           {
             id: 1,
             team: "Real Madrid",
-            kitDescription: "Testing if these works?",
+            kitDescription:
+              "The Real Madrid 2004/05 kit was a classic representation of the club's iconic colors and design elements. The jersey featured the traditional all-white base color that has long been associated with Real Madrid; the iconic all-white design with vertical stripes along the shoulders and upper arm adding subtle texture.",
           },
-          { id: 2, team: "Real Betis" },
+          {
+            id: 2,
+            team: "Real Betis",
+            kitDescription:
+              "The Real Betis retro jersey from 1995 showcases the team's traditional green and white colors. The jersey features a classic design with vertical stripes of a solid green base, accompanied by white trim. The club's crest being proudly displayed on the left chest, embodying the team's heritage and identity during that era.",
+          },
         ],
       },
       {
         id: "premier-league",
         name: "Premier League",
         kit: [
-          { id: 1, team: "Arsenal" },
+          {
+            id: 1,
+            team: "Arsenal",
+            kitDescription:
+              "The Arsenal 2022 kit embodies the club's modern aesthetic, featuring the iconic red and white color scheme. Given its subtle patterns across a collar mainting a polished appearance for fans.",
+          },
           { id: 2, team: "Southampton" },
         ],
       },
@@ -113,13 +124,9 @@ function showClubKits() {
       for (let j = 0; j < subcategories.length; j++) {
         const subcategory = subcategories[j];
         // Create subcategory title element
-        const subcategoryTitle = document.createElement("h2");
+        const subcategoryTitle = document.createElement("div");
         subcategoryTitle.textContent = subcategory.name;
         container.appendChild(subcategoryTitle);
-
-        const additionalText = document.createElement("p");
-        additionalText.textContent = kit.kitDescription;
-        container.appendChild(additionalText);
 
         // Loop through kits in the subcategory
         const kits = subcategory.kit;
@@ -128,6 +135,10 @@ function showClubKits() {
           const imageURL = getImage(kit.team);
           const nextCard = createCard(templateCard, kit.team, imageURL);
           container.appendChild(nextCard);
+
+          const additionalText = document.createElement("p");
+          additionalText.textContent = kit.kitDescription;
+          container.appendChild(additionalText);
         }
       }
       break; // Exit loop once "Club Kits" category is found
@@ -162,6 +173,7 @@ function showVintageKits() {
     return;
   }
 }
+
 function showNationalKits() {
   const container = document.getElementById("national-team-container");
   container.innerHTML = ""; // Clear previous content
@@ -251,6 +263,20 @@ function createCard(templateCard, titleInfo, imageURL) {
   card.appendChild(cardContent);
 
   return card;
+}
+
+function searchFunction() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    const text = card.textContent.toLowerCase();
+    if (text.includes(input)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
 }
 
 //Function to call other
