@@ -22,202 +22,136 @@
  *    with the string you added to the array, but a broken image.
  *
  */
-
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
-const REAL_MADRID_JERSEY_IMAGE = "images/real_madrid.jpg";
-const ARSENAL_JERSEY = "images/arsenal.jpg";
-const ROMA_JERSEY = "images/real_madrid.jpg";
-const ATLETICO_MADRID_JERSEY = "images/real_madrid.jpg";
-const CELTIC_JERSEY = "images/real_madrid.jpg";
-const BORUSSIA_DORTMUND_JERSEY = "images/real_madrid.jpg";
-const INTERNAZIOLANE_JERSEY = "limages/real_madrid.jpg";
-
-let soccer_titles = [
-  "Real Madrid",
-  "Arsenal",
-  "Roma",
-  "Atletico Madrid",
-  "Celtic",
-  "Borussia Dortmund",
-  "Inter",
+const KIT_DATA = [
+  { title: "Real Madrid", imageURL: "images/real_madrid.jpg" },
+  { title: "Arsenal", imageURL: "images/arsenal.jpg" },
+  { title: "Roma FC", imageURL: "images/roma.jpg" },
+  { title: "Southampton", imageURL: "images/southampton.jpg" },
+  { title: "Internazionale", imageURL: "images/inter.jpg" },
+  { title: "Celtic", imageURL: "" },
+  { title: "Borussia", imageURL: "" },
+  { title: "Atletico Madrid", imageURL: "" },
 ];
 
 const CATEGORIES = [
   {
-    id: "club-jerseys",
-    name: "Club Jerseys",
+    id: "club-kits",
+    name: "Club Kits",
     subcategories: [
       {
         id: "la-liga",
         name: "La Liga",
-        jersey: [{ id: 1, team: "Real Madrid" }],
+        kit: [
+          { id: 1, team: "Real Madrid" },
+          { id: 2, team: "Atletico Madrid" },
+        ],
       },
       {
         id: "premier-league",
         name: "Premier League",
-        jersey: [{ id: 1, team: "Arsenal" }],
+        kit: [
+          { id: 1, team: "Arsenal" },
+          { id: 2, team: "Southampton" },
+        ],
       },
-      { id: "serie-a", name: "Serie A" },
-      { id: "bundesliga", name: "Bundesliga" },
+      {
+        id: "serie-a",
+        name: "Serie A",
+        kit: [
+          { id: 1, team: "Roma FC" },
+          { id: 2, team: "Internazionale" },
+        ],
+      },
+      { id: "bundesliga", name: "Bundesliga", kit: [{}] },
     ],
   },
   {
-    id: "national-team-jerseys",
-    name: "National Team Jerseys",
+    id: "national-team-kits",
+    name: "National Team Kits",
     subcategories: [
-      { id: "eruos-cup", name: "Euros Cup" },
-      { id: "world-cup", name: "Wordl Cup" },
-      { id: "afcon", name: "Africa Cup of Nations" },
+      { id: "eruos-cup", name: "Euros Cup", kit: [{}] },
+      { id: "world-cup", name: "Wordl Cup", kit: [{}] },
+      { id: "afcon", name: "Africa Cup of Nations", kit: [{}] },
     ],
   },
   {
-    id: "vintage-jersey",
-    name: "Vintage Jerseys",
+    id: "vintage-kits",
+    name: "Vintage Kits",
+    kit: [{}],
   },
   {
-    id: "exclusive-jerseys",
-    name: "Exclusive jerseys",
+    id: "exclusive-kits",
+    name: "Exclusive Kits",
+    kit: [{}],
   },
 ];
 
-function showClubJerseys() {
-  const container = document.getElementById("club-jerseys-container");
+function showClubKits() {
+  const container = document.getElementById("club-kits-container");
   container.innerHTML = ""; // Clear previous content
 
-  // Loop through club jerseys data
-  CATEGORIES.find(
-    (category) => category.id === "club-jerseys"
-  ).subcategories.forEach((subcategory) => {
-    // Create subcategory title element
-    const subcategoryTitle = document.createElement("h2");
-    subcategoryTitle.textContent = subcategory.name;
-    container.appendChild(subcategoryTitle);
-
-    // Check if the subcategory has jerseys
-    if (subcategory.jersey) {
-      // Loop through jerseys in the subcategory
-      subcategory.jersey.forEach((jersey) => {
-        // Create card element
-        const card = document.createElement("div");
-        card.classList.add("card");
-
-        // Create card content element
-        const cardContent = document.createElement("div");
-        cardContent.classList.add("club-jerseys-container");
-
-        // Set jersey name as card title
-        const title = document.createElement("h2");
-        title.textContent = jersey.team;
-
-        // Create image element
-        const image = document.createElement("img");
-
-        // Set image source based on team name
-        switch (jersey.team) {
-          case "Real Madrid":
-            image.src = REAL_MADRID_JERSEY_IMAGE;
-            break;
-          case "Arsenal":
-            image.src = ARSENAL_JERSEY;
-            break;
-          case "Roma":
-            image.src = ROMA_JERSEY;
-            break;
-          // Add cases for other teams as needed
-          default:
-            // Default image URL if team not found
-            image.src = "default_image.jpg";
-        }
-        image.alt = jersey.team + " Jersey Image";
-
-        // Append title and image to card content
-        cardContent.appendChild(title);
-        cardContent.appendChild(image);
-
-        // Append card content to card
-        card.appendChild(cardContent);
-
-        // Append card to container
-        container.appendChild(card);
-      });
-    }
-  });
-}
-
-// Call function to display club jerseys
-document.addEventListener("DOMContentLoaded", function () {
-  // Call the showClubJerseys function after the DOM is fully loaded
-  showClubJerseys();
-});
-
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
-
-// This function adds cards the page to display the data in the array
-function showCards() {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+  // Loop through each category in CATEGORIES
+  for (let i = 0; i < CATEGORIES.length; i++) {
+    const category = CATEGORIES[i];
+    // Check if the category is "Club Kits"
+    if (category.id === "club-kits") {
+      const subcategories = category.subcategories;
+      // Loop through subcategories within "Club Kits"
+      for (let j = 0; j < subcategories.length; j++) {
+        const subcategory = subcategories[j];
+        // Create subcategory title element
+        const subcategoryTitle = document.createElement("h2");
+        subcategoryTitle.textContent = subcategory.name;
+        container.appendChild(subcategoryTitle);
 
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
+        // Loop through kits in the subcategory
+        const kits = subcategory.kit;
+        for (let k = 0; k < kits.length; k++) {
+          const kit = kits[k];
+          const imageURL = getImage(kit.team);
+          const nextCard = createCard(templateCard, kit.team, imageURL);
+          container.appendChild(nextCard);
+        }
+      }
+      break; // Exit loop once "Club Kits" category is found
     }
-
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
-
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
+function getImage(team) {
+  for (let i = 0; i < KIT_DATA.length; i++) {
+    if (KIT_DATA[i].title === team) {
+      return KIT_DATA[i].imageURL;
+    }
+  }
+  ///returns undefined
+  return;
 }
 
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+function createCard(templateCard, titleInfo, imageURL) {
+  const nextCard = templateCard.cloneNode(true);
+  const card = document.createElement("div");
+  card.classList.add("card");
 
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
+  const cardContent = document.createElement("div");
+  cardContent.classList.add("club-kits-container");
+
+  const title = document.createElement("h2");
+  title.textContent = titleInfo;
+
+  const image = document.createElement("img");
+  image.src = imageURL;
+  image.alt = titleInfo + "Kit Image";
+
+  cardContent.appendChild(title);
+  cardContent.appendChild(image);
+  card.appendChild(cardContent);
+
+  return card;
 }
 
-function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
-}
+// Call function to display club kits
+document.addEventListener("DOMContentLoaded", showClubKits);
+// Call the show kit function after the DOM is fully loaded
