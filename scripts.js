@@ -28,9 +28,13 @@ const KIT_DATA = [
   { title: "Roma FC", imageURL: "images/roma.jpg" },
   { title: "Southampton", imageURL: "images/southampton.jpg" },
   { title: "Internazionale", imageURL: "images/inter.jpg" },
-  { title: "Celtic", imageURL: "" },
-  { title: "Borussia", imageURL: "" },
-  { title: "Atletico Madrid", imageURL: "" },
+  { title: "Celtic", imageURL: "images/celtic.jpg" },
+  { title: "Borussia", imageURL: "images/dortmund.jpg" },
+  { title: "Real Betis", imageURL: "images/real_betis.jpg" },
+  { title: "Retro Arsenal", imageURL: "images/retroA.jpg" },
+  { title: "Spurs Retro", imageURL: "images/spursRetro" },
+  { title: "Special Japan Kit", imageURL: "images/japan-excl.jpg" },
+  { title: "Nigeria", imageURL: "images/nigeria.jpg" },
 ];
 
 const CATEGORIES = [
@@ -42,8 +46,12 @@ const CATEGORIES = [
         id: "la-liga",
         name: "La Liga",
         kit: [
-          { id: 1, team: "Real Madrid" },
-          { id: 2, team: "Atletico Madrid" },
+          {
+            id: 1,
+            team: "Real Madrid",
+            kitDescription: "Testing if these works?",
+          },
+          { id: 2, team: "Real Betis" },
         ],
       },
       {
@@ -62,27 +70,30 @@ const CATEGORIES = [
           { id: 2, team: "Internazionale" },
         ],
       },
-      { id: "bundesliga", name: "Bundesliga", kit: [{}] },
+      {
+        id: "bundesliga",
+        name: "Bundesliga",
+        kit: [{ id: 1, team: "Borussia" }],
+      },
     ],
   },
   {
     id: "national-team-kits",
     name: "National Team Kits",
-    subcategories: [
-      { id: "eruos-cup", name: "Euros Cup", kit: [{}] },
-      { id: "world-cup", name: "Wordl Cup", kit: [{}] },
-      { id: "afcon", name: "Africa Cup of Nations", kit: [{}] },
-    ],
+    kit: [{ id: 1, team: "Nigeria" }],
   },
   {
     id: "vintage-kits",
     name: "Vintage Kits",
-    kit: [{}],
+    kit: [
+      { id: 1, team: "Celtic" },
+      { id: 2, team: "Retro Arsenal" },
+    ],
   },
   {
     id: "exclusive-kits",
     name: "Exclusive Kits",
-    kit: [{}],
+    kit: [{ id: 1, team: "Special Japan Kit" }],
   },
 ];
 
@@ -106,6 +117,10 @@ function showClubKits() {
         subcategoryTitle.textContent = subcategory.name;
         container.appendChild(subcategoryTitle);
 
+        const additionalText = document.createElement("p");
+        additionalText.textContent = kit.kitDescription;
+        container.appendChild(additionalText);
+
         // Loop through kits in the subcategory
         const kits = subcategory.kit;
         for (let k = 0; k < kits.length; k++) {
@@ -117,6 +132,89 @@ function showClubKits() {
       }
       break; // Exit loop once "Club Kits" category is found
     }
+  }
+}
+
+function showVintageKits() {
+  const container = document.getElementById("vintage-container");
+  container.innerHTML = ""; // Clear previous content
+
+  const templateCard = document.querySelector(".card");
+
+  let vintCat;
+  for (let i = 0; i < CATEGORIES.length; i++) {
+    if (CATEGORIES[i].id === "vintage-kits") {
+      vintCat = CATEGORIES[i];
+      break;
+    }
+  }
+
+  if (vintCat) {
+    const vintageKit = vintCat.kit;
+
+    for (let i = 0; i < vintageKit.length; i++) {
+      const kit = vintageKit[i];
+      const imageURL = getImage(kit.team);
+      const nextCard = createCard(templateCard, kit.team, imageURL);
+      container.appendChild(nextCard);
+    }
+  } else {
+    return;
+  }
+}
+function showNationalKits() {
+  const container = document.getElementById("national-team-container");
+  container.innerHTML = ""; // Clear previous content
+
+  const templateCard = document.querySelector(".card");
+
+  let nationalCat;
+  for (let i = 0; i < CATEGORIES.length; i++) {
+    if (CATEGORIES[i].id === "national-team-kits") {
+      nationalCat = CATEGORIES[i];
+      break;
+    }
+  }
+
+  if (nationalCat) {
+    const nationalKit = nationalCat.kit;
+
+    for (let i = 0; i < nationalKit.length; i++) {
+      const kit = nationalKit[i];
+      const imageURL = getImage(kit.team);
+      const nextCard = createCard(templateCard, kit.team, imageURL);
+      container.appendChild(nextCard);
+    }
+  } else {
+    return;
+  }
+}
+
+function showExclusiveKits() {
+  const container = document.getElementById("exclusive-container");
+  container.innerHTML = ""; // Clear previous content
+
+  const templateCard = document.querySelector(".card");
+
+  let exclusiveCat;
+  for (let i = 0; i < CATEGORIES.length; i++) {
+    if (CATEGORIES[i].id === "exclusive-kits") {
+      exclusiveCat = CATEGORIES[i];
+      break;
+    }
+  }
+
+  if (exclusiveCat) {
+    const exclusiveKit = exclusiveCat.kit;
+
+    for (let i = 0; i < exclusiveKit.length; i++) {
+      const kit = exclusiveKit[i];
+      const imageURL = getImage(kit.team);
+      const nextCard = createCard(templateCard, kit.team, imageURL);
+      container.appendChild(nextCard);
+    }
+  } else {
+    return;
   }
 }
 
@@ -137,6 +235,9 @@ function createCard(templateCard, titleInfo, imageURL) {
 
   const cardContent = document.createElement("div");
   cardContent.classList.add("club-kits-container");
+  cardContent.classList.add("national-team-container");
+  cardContent.classList.add("vintage-container");
+  cardContent.classList.add("exclusive-container");
 
   const title = document.createElement("h2");
   title.textContent = titleInfo;
@@ -152,6 +253,10 @@ function createCard(templateCard, titleInfo, imageURL) {
   return card;
 }
 
-// Call function to display club kits
-document.addEventListener("DOMContentLoaded", showClubKits);
-// Call the show kit function after the DOM is fully loaded
+//Function to call other
+document.addEventListener("DOMContentLoaded", function () {
+  showClubKits();
+  showVintageKits();
+  showNationalKits();
+  showExclusiveKits();
+});
