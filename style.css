@@ -3,6 +3,9 @@ html {
   height: 120%;
   font-family: "Josefin Sans", sans-serif;
 }
+p {
+  font-family: "Josefin Sans", sans-serif;
+}
 
 a {
   color: black;
@@ -23,7 +26,7 @@ body {
   flex-direction: column;
   margin: 0;
   min-height: 100vh;
-  background-color: rgb(247, 242, 242);
+  background-color: #b1a296;
 }
 
 .main-header {
@@ -33,11 +36,7 @@ body {
 
 nav {
   margin-top: 40px;
-  background-color: rgb(
-    247,
-    242,
-    242
-  ); /* Set the background color to match the title */
+  background-color: rgb(247, 242, 242);
   padding: 10px; /* Add padding to the navigation bar */
 }
 
