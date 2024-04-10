@@ -33,7 +33,11 @@ body {
 
 nav {
   margin-top: 40px;
-  background-color: #171616; /* Set the background color to match the title */
+  background-color: rgb(
+    247,
+    242,
+    242
+  ); /* Set the background color to match the title */
   padding: 10px; /* Add padding to the navigation bar */
 }
 
@@ -95,8 +99,8 @@ p {
   border: 1px solid #ccc;
   background-color: #fff;
 
-  max-width: 40%;
-  margin-left: 30%;
+  max-width: 35%;
+  margin-left: 29%;
   margin-bottom: 20px;
 }
 
