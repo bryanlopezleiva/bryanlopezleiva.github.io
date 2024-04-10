@@ -22,6 +22,8 @@
  *    with the string you added to the array, but a broken image.
  *
  */
+
+// Data for various kits, including title and image URL
 const KIT_DATA = [
   { title: "Real Madrid", imageURL: "images/real_madrid.jpg" },
   { title: "Arsenal", imageURL: "images/arsenal.jpg" },
@@ -37,10 +39,13 @@ const KIT_DATA = [
   { title: "Nigeria", imageURL: "images/nigeria.jpg" },
 ];
 
+// Categories of kits with subcategories
 const CATEGORIES = [
   {
     id: "club-kits",
     name: "Club Kits",
+    // Subcategories for different leagues
+    // Each containing kits for different teams
     subcategories: [
       {
         id: "la-liga",
@@ -70,48 +75,97 @@ const CATEGORIES = [
             kitDescription:
               "The Arsenal 2022 kit embodies the club's modern aesthetic, featuring the iconic red and white color scheme. Given its subtle patterns across a collar mainting a polished appearance for fans.",
           },
-          { id: 2, team: "Southampton" },
+          {
+            id: 2,
+            team: "Southampton",
+            kitDescription:
+              "Southamptons 2022/23 brings back the style presented to many fans from the 80s! Drawing inspiration from that era, the shirt features the iconic red stripe down the middle along its crest and white stripes along the significant red stripe to make mark of the clubs color scheme.",
+          },
         ],
       },
       {
         id: "serie-a",
         name: "Serie A",
         kit: [
-          { id: 1, team: "Roma FC" },
-          { id: 2, team: "Internazionale" },
+          {
+            id: 1,
+            team: "Roma FC",
+            kitDescription:
+              "The Roma 2020-21 away kit departed from the club's traditional colors. The pale ivory color is a unique subtle color in touch with the maroon, yellow and red piping along the collar.",
+          },
+          {
+            id: 2,
+            team: "Internazionale",
+            kitDescription:
+              "The Inter Milan 2010 kit features the iconic black and blue stripes that are synonymous with the club. The kit feature the balck and blue stripes as it was worn during an era of great success for Inter Milan, including their historic treble-winning season under manager José Mourinho.",
+          },
         ],
       },
       {
         id: "bundesliga",
         name: "Bundesliga",
-        kit: [{ id: 1, team: "Borussia" }],
+        kit: [
+          {
+            id: 1,
+            team: "Borussia",
+            kitDescription:
+              "The Borussia Dortmund 2014/15 away kit featured a primarily black color scheme with small yellow stripes, offering a sleek and dynamic design. The black base provided a bold backdrop for the vibrant yellow stripes, creating a visually striking contrast",
+          },
+        ],
       },
     ],
   },
   {
     id: "national-team-kits",
     name: "National Team Kits",
-    kit: [{ id: 1, team: "Nigeria" }],
+    kit: [
+      {
+        id: 1,
+        team: "Nigeria",
+        kitDescription:
+          "The Nigeria 2018 kit gained widespread acclaim for its bold and vibrant design. Inspired by traditional Nigerian culture, the jersey featured an eye-catching pattern of green and white zigzags, paying homage to the country's agbada robes. The kit was celebrated for its unique aesthetic and cultural significance, quickly becoming one of the most sought-after jerseys of the 2018 FIFA World Cup.",
+      },
+    ],
   },
   {
     id: "vintage-kits",
     name: "Vintage Kits",
     kit: [
-      { id: 1, team: "Celtic" },
-      { id: 2, team: "Retro Arsenal" },
+      {
+        id: 1,
+        team: "Celtic",
+        kitDescription:
+          "The Celtic 97/98 kit with a collar was a classic representation of the club's iconic green and tranparent hoop. The kit features a traditional collar design, adding a touch of retro elegance to the kit.",
+      },
+      {
+        id: 2,
+        team: "Retro Arsenal",
+        kitDescription:
+          "The Arsenal burgundy kit from 2005 was a memorable and distinctive departure from the traditional red and white colors. The kit features a deep burgundy base with little to no patterns making it very distinctive.",
+      },
     ],
   },
   {
     id: "exclusive-kits",
     name: "Exclusive Kits",
-    kit: [{ id: 1, team: "Special Japan Kit" }],
+    kit: [
+      {
+        id: 1,
+        team: "Special Japan Kit",
+        kitDescription:
+          "The Japan x Nigo kit is a collaboration between the Japanese Football Association and renowned Japanese fashion designer Nigo. The kit offers a unique fusion of football culture and with Japanese culture embroidery.",
+      },
+    ],
   },
 ];
 
+// Function to display club kits
 function showClubKits() {
+  // Get container element
   const container = document.getElementById("club-kits-container");
   container.innerHTML = ""; // Clear previous content
 
+  //Get template card
   const templateCard = document.querySelector(".card");
 
   // Loop through each category in CATEGORIES
@@ -132,10 +186,16 @@ function showClubKits() {
         const kits = subcategory.kit;
         for (let k = 0; k < kits.length; k++) {
           const kit = kits[k];
+
+          // Get image URL for the kit
+
           const imageURL = getImage(kit.team);
+
+          // Create card for the kit
           const nextCard = createCard(templateCard, kit.team, imageURL);
           container.appendChild(nextCard);
 
+          // Add kit description
           const additionalText = document.createElement("p");
           additionalText.textContent = kit.kitDescription;
           container.appendChild(additionalText);
@@ -146,7 +206,10 @@ function showClubKits() {
   }
 }
 
+// Function to display vintage kits
 function showVintageKits() {
+  // Similar to showClubKits, but for vintage kits
+
   const container = document.getElementById("vintage-container");
   container.innerHTML = ""; // Clear previous content
 
@@ -168,6 +231,11 @@ function showVintageKits() {
       const imageURL = getImage(kit.team);
       const nextCard = createCard(templateCard, kit.team, imageURL);
       container.appendChild(nextCard);
+
+      // Add kit description
+      const additionalText = document.createElement("p");
+      additionalText.textContent = kit.kitDescription;
+      container.appendChild(additionalText);
     }
   } else {
     return;
@@ -196,6 +264,11 @@ function showNationalKits() {
       const imageURL = getImage(kit.team);
       const nextCard = createCard(templateCard, kit.team, imageURL);
       container.appendChild(nextCard);
+
+      // Add kit description
+      const additionalText = document.createElement("p");
+      additionalText.textContent = kit.kitDescription;
+      container.appendChild(additionalText);
     }
   } else {
     return;
@@ -224,12 +297,18 @@ function showExclusiveKits() {
       const imageURL = getImage(kit.team);
       const nextCard = createCard(templateCard, kit.team, imageURL);
       container.appendChild(nextCard);
+
+      // Add kit description
+      const additionalText = document.createElement("p");
+      additionalText.textContent = kit.kitDescription;
+      container.appendChild(additionalText);
     }
   } else {
     return;
   }
 }
 
+// Function to get image URL for a team
 function getImage(team) {
   for (let i = 0; i < KIT_DATA.length; i++) {
     if (KIT_DATA[i].title === team) {
@@ -240,7 +319,9 @@ function getImage(team) {
   return;
 }
 
+// Function to create a card element
 function createCard(templateCard, titleInfo, imageURL) {
+  // Clone template card and create card elements
   const nextCard = templateCard.cloneNode(true);
   const card = document.createElement("div");
   card.classList.add("card");
@@ -265,7 +346,10 @@ function createCard(templateCard, titleInfo, imageURL) {
   return card;
 }
 
+// Function to filter/search kits
 function searchFunction() {
+  // Get search input value
+  // Loop through cards and show/hide based on search text
   const input = document.getElementById("searchInput").value.toLowerCase();
   const cards = document.querySelectorAll(".card");
 
@@ -279,7 +363,7 @@ function searchFunction() {
   });
 }
 
-//Function to call other
+// Event listener to call functions when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   showClubKits();
   showVintageKits();
